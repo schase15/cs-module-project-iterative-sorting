@@ -1,24 +1,54 @@
-# TO-DO: Complete the selection_sort() function below
+# Iterative and Bubble sorting assignment
+
+# In-place selection sort
 def selection_sort(arr):
-    # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
+    # loop through n elements
+        # Minus one because we don't need to sort the very last item, 
+        # it has already been sorted by the one before it
+    for i in range(0, len(arr) -1):
 
+        # Current index we are looking at, lowest index of the unsorted boundary
+        boundary= i
 
-        # TO-DO: swap
-        # Your code here
+        # Current value we are looking at, at the starting point of the unsorted boundary
+        smallest_value = arr[boundary]
 
+        # Current index of the lower end of the boundary
+        smallest_index = boundary
+
+        # Find the smallest element in the unsorted portion of the array
+        # Unsorted array range is from the boundary line 
+            # (which we are moving by 1 on each iteration of the first for loop)
+        # to the end of the array
+        for unsorted_index in range(boundary, len(arr)):
+            # Iterate through the unsorted portion of the array and find the smallest value and its index location
+            # Save that as the smallest value and smallest index
+            if arr[unsorted_index] < smallest_value:
+                smallest_value = arr[unsorted_index]
+                smallest_index = unsorted_index
+            
+        # After iterating through all of the unsorted numbers and finding the smallest one,
+        # Swap the found smallest value with the value at the begining of the boundary
+        arr[boundary], arr[smallest_index] = arr[smallest_index], arr[boundary]
+
+        # Then it will loop through on the next index of the whole array
+
+    # When it has gone through the entire array, return the now sorted array
     return arr
 
 
-# TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
-    # Your code here
+    # Start at index 0 and iterate through each item in array
+    # Compare element n to its next element.
+    # If the next element is less than the first element, swap them and start back at index 0
 
+    # Don't need to look at the last 
+    for i in range(len(arr)-1):
+        # Compare to the next item in the array
+        # If the next value is less than the first value, swap them and start over
+        if arr[i+1] < arr[i]:
+            arr[i], arr[i +1] = arr[i+1], arr[i]
+            bubble_sort(arr)
 
     return arr
 
