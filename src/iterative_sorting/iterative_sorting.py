@@ -38,19 +38,41 @@ def selection_sort(arr):
 
 
 def bubble_sort(arr):
-    # Start at index 0 and iterate through each item in array
-    # Compare element n to its next element.
-    # If the next element is less than the first element, swap them and start back at index 0
+    '''
+    Completed this thinking a bubble sort acted differently. This method compares n item 
+    to the item next to it. If they need to be swapped, they swap and then start over from the begining.
+    Only if it doesn't need to be swapped does it move on to the next item.
+    '''
 
-    # Don't need to look at the last 
-    for i in range(len(arr)-1):
-        # Compare to the next item in the array
-        # If the next value is less than the first value, swap them and start over
-        if arr[i+1] < arr[i]:
-            arr[i], arr[i +1] = arr[i+1], arr[i]
-            bubble_sort(arr)
+    # # Start at index 0 and iterate through each item in array
+    # # Compare element n to its next element.
+    # # If the next element is less than the first element, swap them and start back at index 0
 
+    # # Don't need to look at the last 
+    # for i in range(len(arr)-1):
+    #     # Compare to the next item in the array
+    #     # If the next value is less than the first value, swap them and start over
+    #     if arr[i+1] < arr[i]:
+    #         arr[i], arr[i +1] = arr[i+1], arr[i]
+    #         bubble_sort(arr)
+
+    # return arr
+
+
+    '''
+    This method compares each item to its next, walking through the entire array before starting over.
+    '''
+    # Go through the array except for the last item, that will have already been sorted
+    for i in range(len(arr) - 1):
+        # With each index position, traverse through the array that has not been sorted yet
+        # The last i items have already been sorted
+        for j in range(len(arr) - i - 1):
+            # Compare the values, if the next is less than the current, swap them
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    # Return the array
     return arr
+
 
 '''
 STRETCH: implement the Counting Sort function below
